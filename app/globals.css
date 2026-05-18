@@ -2,26 +2,70 @@
 @tailwind components;
 @tailwind utilities;
 
+/* ─────────────────────────────────────────────
+   CSS custom properties — RGB without commas
+   for Tailwind's <alpha-value> compatibility
+   ───────────────────────────────────────────── */
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  /* Brand */
+  --brand: 30 58 95;          /* #1E3A5F — deep navy blue */
+  --brand-light: 41 98 183;   /* #2962B7 */
+  --accent: 249 115 22;       /* #F97316 — copper orange */
+
+  /* Backgrounds */
+  --bg: 250 251 253;
+  --surface: 255 255 255;
+  --surface-2: 243 244 246;
+
+  /* Foregrounds */
+  --fg: 15 23 42;
+  --fg-muted: 71 85 105;
+  --fg-subtle: 148 163 184;
+
+  /* Borders */
+  --border: 226 232 240;
+  --border-strong: 203 213 225;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+.dark {
+  --bg: 15 20 30;
+  --surface: 22 29 42;
+  --surface-2: 30 38 56;
+
+  --fg: 241 245 249;
+  --fg-muted: 148 163 184;
+  --fg-subtle: 71 85 105;
+
+  --border: 30 40 58;
+  --border-strong: 44 56 80;
+}
+
+/* ─────────────────────────────────────────────
+   Base styles
+   ───────────────────────────────────────────── */
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-bg text-fg antialiased;
+  }
+
+  /* Reduced motion — disable all animations */
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+      scroll-behavior: auto !important;
+    }
   }
 }
 
-body {
-  color: var(--foreground);
-  background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
-}
-
-@layer utilities {
-  .text-balance {
-    text-wrap: balance;
-  }
+/* Skip to main content link */
+.skip-to-main {
+  @apply fixed -top-14 left-4 z-[999] rounded-lg bg-brand px-4 py-3 text-sm font-semibold text-white shadow-lg transition-all focus:top-4;
 }
