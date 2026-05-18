@@ -2,6 +2,7 @@ import Link from "next/link"
 import { Phone, Mail, MapPin, Wrench, Clock } from "lucide-react"
 import { siteConfig } from "@/lib/site-config"
 import Container from "@/components/ui/Container"
+import ObfuscatedEmail from "@/components/ui/ObfuscatedEmail"
 
 const Footer = () => {
   const year = new Date().getFullYear()
@@ -58,7 +59,12 @@ const Footer = () => {
               <li>
                 <span className="flex items-start gap-2">
                   <Mail size={14} aria-hidden="true" className="mt-0.5 shrink-0 text-accent" />
-                  <span aria-label="Adresse email de contact">contact[at]plomberie-muller.fr</span>
+                  <ObfuscatedEmail
+                    user="contact"
+                    domain="plomberie-muller.fr"
+                    asLink
+                    className="text-white/70 hover:text-brand"
+                  />
                 </span>
               </li>
               <li>

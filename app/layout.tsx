@@ -1,9 +1,10 @@
 import type { Metadata } from "next"
 import { Inter, Space_Grotesk } from "next/font/google"
-import { ThemeProvider } from "next-themes"
+import { Providers } from "@/app/providers"
 import Navbar from "@/components/layout/Navbar"
 import Footer from "@/components/layout/Footer"
 import FloatingCTA from "@/components/ui/FloatingCTA"
+import CookieBanner from "@/components/ui/CookieBanner"
 import { siteConfig } from "@/lib/site-config"
 import { getSiteUrl } from "@/lib/env"
 import "./globals.css"
@@ -83,13 +84,13 @@ const jsonLd = {
   "@context": "https://schema.org",
   "@graph": [
     {
-      "@type": "ProfessionalService",
+      // PlumbingService is the most specific Google-recognised type for plumbers
+      "@type": ["PlumbingService", "LocalBusiness"],
       "@id": `${getSiteUrl()}/#business`,
       name: siteConfig.name,
       legalName: siteConfig.legalName,
       url: getSiteUrl(),
       telephone: siteConfig.contact.phonePlain,
-      email: siteConfig.contact.email,
       description: siteConfig.description,
       image: `${getSiteUrl()}/og-image.jpg`,
       priceRange: "€€",
@@ -106,6 +107,7 @@ const jsonLd = {
         latitude: siteConfig.geo.latitude,
         longitude: siteConfig.geo.longitude,
       },
+      // Regular opening hours Lun–Sam 07:00–19:00
       openingHoursSpecification: [
         {
           "@type": "OpeningHoursSpecification",
@@ -116,24 +118,45 @@ const jsonLd = {
         {
           "@type": "OpeningHoursSpecification",
           dayOfWeek: ["Saturday"],
-          opens: "08:00",
-          closes: "17:00",
+          opens: "07:00",
+          closes: "19:00",
         },
       ],
+      // Emergency service available 24/7 — separate specialOpeningHoursSpecification
+      specialOpeningHoursSpecification: {
+        "@type": "OpeningHoursSpecification",
+        dayOfWeek: [
+          "Monday", "Tuesday", "Wednesday", "Thursday",
+          "Friday", "Saturday", "Sunday",
+        ],
+        opens: "00:00",
+        closes: "23:59",
+        name: "Dépannage urgence 24h/7j",
+      },
       aggregateRating: {
         "@type": "AggregateRating",
         ratingValue: siteConfig.rating.value,
         reviewCount: siteConfig.rating.count,
+        bestRating: 5,
+        worstRating: 1,
       },
       areaServed: [
-        "Sarreguemines",
-        "Forbach",
-        "Saint-Avold",
-        "Freyming-Merlebach",
-        "Sarralbe",
-        "Bitche",
-        "Creutzwald",
-        "Morhange",
+        { "@type": "City", name: "Sarreguemines" },
+        { "@type": "City", name: "Forbach" },
+        { "@type": "City", name: "Saint-Avold" },
+        { "@type": "City", name: "Freyming-Merlebach" },
+        { "@type": "City", name: "Sarralbe" },
+        { "@type": "City", name: "Bitche" },
+        { "@type": "City", name: "Creutzwald" },
+        { "@type": "City", name: "Morhange" },
+      ],
+      hasCredential: [
+        {
+          "@type": "EducationalOccupationalCredential",
+          credentialCategory: "certification",
+          name: "RGE QualiGaz",
+          recognizedBy: { "@type": "Organization", name: "QualiGaz" },
+        },
       ],
       hasOfferCatalog: {
         "@type": "OfferCatalog",
@@ -144,6 +167,7 @@ const jsonLd = {
           { "@type": "Offer", itemOffered: { "@type": "Service", name: "Installation chauffe-eau" } },
           { "@type": "Offer", itemOffered: { "@type": "Service", name: "Remplacement chaudière gaz" } },
           { "@type": "Offer", itemOffered: { "@type": "Service", name: "Débouchage canalisations" } },
+          { "@type": "Offer", itemOffered: { "@type": "Service", name: "Détection de fuites" } },
         ],
       },
     },
@@ -178,7 +202,7 @@ export default function RootLayout({
         />
       </head>
       <body className={`${inter.variable} ${spaceGrotesk.variable} font-sans`}>
-        <ThemeProvider attribute="class" defaultTheme="dark" enableSystem>
+        <Providers>
           {/* Skip to main content */}
           <a href="#main-content" className="skip-to-main">
             Aller au contenu principal
@@ -192,7 +216,8 @@ export default function RootLayout({
 
           <Footer />
           <FloatingCTA />
-        </ThemeProvider>
+          <CookieBanner />
+        </Providers>
       </body>
     </html>
   )

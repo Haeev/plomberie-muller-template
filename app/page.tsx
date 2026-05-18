@@ -3,6 +3,7 @@ import UrgenceBanner from "@/components/sections/UrgenceBanner"
 import Services from "@/components/sections/Services"
 import WhyUs from "@/components/sections/WhyUs"
 import Process from "@/components/sections/Process"
+import TarifsIndicatifs from "@/components/sections/TarifsIndicatifs"
 import Realisations from "@/components/sections/Realisations"
 import Testimonials from "@/components/sections/Testimonials"
 import About from "@/components/sections/About"
@@ -17,6 +18,7 @@ export default function HomePage() {
       <Services />
       <WhyUs />
       <Process />
+      <TarifsIndicatifs />
       <Realisations />
       <Testimonials />
       <About />

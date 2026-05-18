@@ -17,10 +17,15 @@ const navLinks = [
 
 const Navbar = () => {
   const [scrolled, setScrolled] = useState(false)
+  const [compact, setCompact] = useState(false)
   const [menuOpen, setMenuOpen] = useState(false)
 
   useEffect(() => {
-    const handleScroll = () => setScrolled(window.scrollY > 20)
+    const handleScroll = () => {
+      const y = window.scrollY
+      setScrolled(y > 20)
+      setCompact(y > 80)
+    }
     window.addEventListener("scroll", handleScroll, { passive: true })
     return () => window.removeEventListener("scroll", handleScroll)
   }, [])
@@ -38,7 +43,10 @@ const Navbar = () => {
       role="banner"
     >
       <nav
-        className="mx-auto flex max-w-7xl items-center justify-between px-4 py-4 sm:px-6 lg:px-8"
+        className={cn(
+          "mx-auto flex max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8 transition-all duration-300",
+          compact ? "py-2" : "py-4"
+        )}
         aria-label="Navigation principale"
       >
         {/* Logo */}
@@ -47,10 +55,20 @@ const Navbar = () => {
           className="flex items-center gap-2.5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand focus-visible:ring-offset-2 rounded-md"
           aria-label="Plomberie Müller — retour à l'accueil"
         >
-          <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-brand text-white">
-            <Wrench size={18} aria-hidden="true" />
+          <div
+            className={cn(
+              "flex items-center justify-center rounded-lg bg-brand text-white transition-all duration-300",
+              compact ? "h-7 w-7" : "h-9 w-9"
+            )}
+          >
+            <Wrench size={compact ? 14 : 18} aria-hidden="true" />
           </div>
-          <span className="font-bold text-fg text-lg leading-tight">
+          <span
+            className={cn(
+              "font-bold text-fg leading-tight transition-all duration-300",
+              compact ? "text-base" : "text-lg"
+            )}
+          >
             Plomberie <span className="text-brand">Müller</span>
           </span>
         </Link>
@@ -69,17 +87,30 @@ const Navbar = () => {
           ))}
         </ul>
 
-        {/* CTA */}
+        {/* CTA — full label before scroll, icon-only when compact */}
         <div className="hidden items-center gap-3 lg:flex">
-          <Button
-            href={`tel:${siteConfig.contact.phonePlain}`}
-            variant="primary"
-            size="sm"
-            aria-label={`Appeler le ${siteConfig.contact.phone}`}
-          >
-            <Phone size={16} aria-hidden="true" />
-            {siteConfig.contact.phone}
-          </Button>
+          {compact ? (
+            <a
+              href={`tel:${siteConfig.contact.phonePlain}`}
+              className={cn(
+                "flex h-9 w-9 items-center justify-center rounded-xl bg-brand text-white shadow-sm",
+                "transition-all hover:bg-brand/90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand focus-visible:ring-offset-2"
+              )}
+              aria-label={`Appeler le ${siteConfig.contact.phone}`}
+            >
+              <Phone size={16} aria-hidden="true" />
+            </a>
+          ) : (
+            <Button
+              href={`tel:${siteConfig.contact.phonePlain}`}
+              variant="primary"
+              size="sm"
+              aria-label={`Appeler le ${siteConfig.contact.phone}`}
+            >
+              <Phone size={16} aria-hidden="true" />
+              {siteConfig.contact.phone}
+            </Button>
+          )}
         </div>
 
         {/* Mobile menu button */}
@@ -122,9 +153,9 @@ const Navbar = () => {
           <div className="mt-4">
             <Button
               href={`tel:${siteConfig.contact.phonePlain}`}
-              variant="primary"
+              variant="secondary"
               size="lg"
-              className="w-full"
+              className="w-full min-h-[52px]"
               aria-label={`Appeler le ${siteConfig.contact.phone}`}
             >
               <Phone size={18} aria-hidden="true" />

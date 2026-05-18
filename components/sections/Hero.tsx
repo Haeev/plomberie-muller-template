@@ -94,21 +94,23 @@ const Hero = () => (
             initial={{ opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.35 }}
-            className="flex flex-wrap gap-4"
+            className="flex flex-col gap-3 sm:flex-row sm:flex-wrap sm:gap-4"
           >
             <Button
               href={`tel:${siteConfig.contact.phonePlain}`}
-              variant="primary"
+              variant="secondary"
               size="lg"
-              aria-label={`Appeler le ${siteConfig.contact.phone}`}
+              className="min-h-[56px] w-full sm:w-auto text-lg"
+              aria-label={`Appeler maintenant le ${siteConfig.contact.phone}`}
             >
-              <Phone size={20} aria-hidden="true" />
-              {siteConfig.contact.phone}
+              <Phone size={22} aria-hidden="true" />
+              Appeler maintenant
             </Button>
             <Button
               href="#contact"
               variant="outline"
               size="lg"
+              className="min-h-[56px] w-full sm:w-auto"
               aria-label="Demander un devis gratuit"
             >
               Demander un devis
