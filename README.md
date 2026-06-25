@@ -1,54 +1,54 @@
-# Plomberie Müller — Site vitrine (démo)
+# Plomberie Müller — Showcase Website (Demo)
 
-> **Démo en ligne :** [plomberie-muller-template.vercel.app](https://plomberie-muller-template.vercel.app) · **Réalisé par** [Nowakowski Web](https://nowakowski-web.fr)
+> **Live demo:** [plomberie-muller-template.vercel.app](https://plomberie-muller-template.vercel.app) · **Built by** [Nowakowski Web](https://nowakowski-web.fr)
 
-Template de site vitrine pour **artisan plombier**, conçu pour PME et TPE locales en Moselle et Grand Est. Projet fictif (Plomberie Müller, Sarreguemines) — aucune donnée client réelle.
+A showcase website template for a **local plumbing business**, designed for small businesses in Moselle and Grand Est, France. Fictional project (Plomberie Müller, Sarreguemines) — no real client data.
 
-## Contexte
+## Overview
 
-Maquette commerciale présentée sur [nowakowski-web.fr](https://nowakowski-web.fr) pour illustrer le type de site livré aux artisans du bâtiment : landing complète, SEO local, formulaire de contact et identité professionnelle.
+Commercial demo featured on [nowakowski-web.fr](https://nowakowski-web.fr) to illustrate the type of site delivered to tradespeople: full landing page, local SEO, contact form, and professional branding.
 
 ## Stack
 
-| Couche | Technologie |
-|--------|-------------|
+| Layer | Technology |
+|-------|------------|
 | Framework | Next.js 14 (App Router) |
-| Langage | TypeScript |
-| Styles | Tailwind CSS |
+| Language | TypeScript |
+| Styling | Tailwind CSS |
 | Animations | Framer Motion |
-| Déploiement | Vercel |
+| Hosting | Vercel |
 
-## Fonctionnalités
+## Features
 
-- Landing responsive avec hero, services, processus et tarifs indicatifs
-- Bandeau urgence 24h/7j, réalisations et témoignages
-- FAQ structurée (schema.org) et formulaire de contact
-- SEO local : métadonnées, JSON-LD, `sitemap.xml`, `robots.txt`
-- Thème clair / sombre, accessibilité (skip link, focus visible)
-- Pages légales (mentions légales)
+- Responsive landing page with hero, services, process, and indicative pricing
+- 24/7 emergency banner, project gallery, and testimonials
+- Structured FAQ (schema.org) and contact form
+- Local SEO: metadata, JSON-LD, `sitemap.xml`, `robots.txt`
+- Light / dark theme, accessibility (skip link, visible focus states)
+- Legal pages (terms & legal notice)
 
-## Lancer en local
+## Run locally
 
 ```bash
 npm install
 npm run dev
 ```
 
-Ouvrir [http://localhost:3000](http://localhost:3000)
+Open [http://localhost:3000](http://localhost:3000)
 
-## Build production
+## Production build
 
 ```bash
 npm run build
 npm run start
 ```
 
-## Liens
+## Links
 
-- [Nowakowski Web — agence](https://nowakowski-web.fr)
-- [GitHub Nowakowski-Web](https://github.com/Haeev/Nowakowski-Web)
-- [Démo Électricité Schmitt](https://github.com/Haeev/electricite-schmitt)
+- [Nowakowski Web — agency](https://nowakowski-web.fr)
+- [Nowakowski-Web on GitHub](https://github.com/Haeev/Nowakowski-Web)
+- [Electricité Schmitt demo](https://github.com/Haeev/electricite-schmitt)
 
-## Licence
+## License
 
-MIT — projet de démonstration. Voir [LICENSE](./LICENSE).
+MIT — demonstration project. See [LICENSE](./LICENSE).
