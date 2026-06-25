@@ -1,36 +1,54 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Plomberie Müller — Site vitrine (démo)
 
-## Getting Started
+> **Démo en ligne :** [plomberie-muller-template.vercel.app](https://plomberie-muller-template.vercel.app) · **Réalisé par** [Nowakowski Web](https://nowakowski-web.fr)
 
-First, run the development server:
+Template de site vitrine pour **artisan plombier**, conçu pour PME et TPE locales en Moselle et Grand Est. Projet fictif (Plomberie Müller, Sarreguemines) — aucune donnée client réelle.
+
+## Contexte
+
+Maquette commerciale présentée sur [nowakowski-web.fr](https://nowakowski-web.fr) pour illustrer le type de site livré aux artisans du bâtiment : landing complète, SEO local, formulaire de contact et identité professionnelle.
+
+## Stack
+
+| Couche | Technologie |
+|--------|-------------|
+| Framework | Next.js 14 (App Router) |
+| Langage | TypeScript |
+| Styles | Tailwind CSS |
+| Animations | Framer Motion |
+| Déploiement | Vercel |
+
+## Fonctionnalités
+
+- Landing responsive avec hero, services, processus et tarifs indicatifs
+- Bandeau urgence 24h/7j, réalisations et témoignages
+- FAQ structurée (schema.org) et formulaire de contact
+- SEO local : métadonnées, JSON-LD, `sitemap.xml`, `robots.txt`
+- Thème clair / sombre, accessibilité (skip link, focus visible)
+- Pages légales (mentions légales)
+
+## Lancer en local
 
 ```bash
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Ouvrir [http://localhost:3000](http://localhost:3000)
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Build production
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```bash
+npm run build
+npm run start
+```
 
-## Learn More
+## Liens
 
-To learn more about Next.js, take a look at the following resources:
+- [Nowakowski Web — agence](https://nowakowski-web.fr)
+- [GitHub Nowakowski-Web](https://github.com/Haeev/Nowakowski-Web)
+- [Démo Électricité Schmitt](https://github.com/Haeev/electricite-schmitt)
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Licence
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+MIT — projet de démonstration. Voir [LICENSE](./LICENSE).
